@@ -8,7 +8,7 @@ if [ "${SOURCE_BRANCH}" != "master" ]; then
     exit 0
 fi
 
-for tag in $(docker images hseeberger/scala-sbt --format "{{.Tag}}");
+for tag in $(docker images doomoolmori/scala-sbt-for-ci --format "{{.Tag}}");
 do
-    docker push "hseeberger/scala-sbt:${tag}"
+    docker push "doomoolmori/scala-sbt-for-ci:${tag}"
 done

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TAG="hseeberger/scala-sbt:${TAG}"
+TAG="doomoolmori/scala-sbt-for-ci:${TAG}"
 
 set -x
 docker build $DOCKER_CONTEXT \

@@ -1,7 +1,7 @@
 #
 # Scala and sbt Dockerfile
 #
-# https://github.com/hseeberger/scala-sbt
+# https://github.com/doomoolmori/scala-sbt-for-ci
 #
 
 # Pull base image
@@ -13,6 +13,9 @@ ARG SCALA_VERSION
 ENV SCALA_VERSION ${SCALA_VERSION:-2.13.1}
 ARG SBT_VERSION
 ENV SBT_VERSION ${SBT_VERSION:-1.3.3}
+
+ENV SBT_OPTS "-Dsbt.global.base=sbt-cache/.sbtboot -Dsbt.boot.directory=sbt-cache/.boot -Dsbt.ivy.home=sbt-cache/.ivy"
+ENV SBT_CACHE_DIR "sbt-cache/.ivy/cache"
 
 # Install sbt
 RUN \
@@ -55,7 +58,7 @@ RUN \
 # This allows users of this container to choose, whether they want to run the container as sbtuser (non-root) or as root
 USER root
 RUN \
-  ln -s /home/sbtuser/.cache /root/.cache && \
+  ln -s /home/sbtuser/sbt-cache/.ivy/cache /root/.cache && \
   ln -s /home/sbtuser/.ivy2 /root/.ivy2 && \
   ln -s /home/sbtuser/.sbt /root/.sbt
 
