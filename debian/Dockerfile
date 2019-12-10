@@ -54,17 +54,3 @@ RUN \
   echo "case object Temp" > Temp.scala && \
   sbt compile && \
   rm -r project && rm build.sbt && rm Temp.scala && rm -r target
-
-# Link everything into root as well
-# This allows users of this container to choose, whether they want to run the container as sbtuser (non-root) or as root
-USER root
-RUN \
-  ln -s /home/sbtuser/sbt-cache/ivy /root/.ivy2 && \
-  ln -s /home/sbtuser/sbt-cache/sbtboot /root/.sbt \
-  ln -s /home/sbtuser/sbt-cache/coursier /root/.cache/.coursier
-
-# Switch working directory back to root
-## Users wanting to use this container as non-root should combine the two following arguments
-## -u sbtuser
-## -w /home/sbtuser
-WORKDIR /root  
