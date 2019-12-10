@@ -35,16 +35,6 @@ RUN \
   chmod -R 755 /usr/share/scala && \
   ln -s /usr/share/scala/bin/scala /usr/local/bin/scala
 
-# Add and use user sbtuser
-RUN groupadd --gid 1001 sbtuser && useradd --gid 1001 --uid 1001 sbtuser --shell /bin/bash
-RUN chown -R sbtuser:sbtuser /opt
-RUN mkdir /home/sbtuser && chown -R sbtuser:sbtuser /home/sbtuser
-RUN mkdir /logs && chown -R sbtuser:sbtuser /logs
-USER sbtuser
-
-# Switch working directory
-WORKDIR /home/sbtuser
-
 # Prepare sbt (warm cache)
 RUN \
   sbt sbtVersion && \
