@@ -12,7 +12,7 @@ FROM openjdk:${BASE_IMAGE_TAG:-11.0.2-jdk-oraclelinux7}
 ARG SCALA_VERSION
 ENV SCALA_VERSION ${SCALA_VERSION:-2.13.1}
 ARG SBT_VERSION
-ENV SBT_VERSION ${SBT_VERSION:-1.3.6}
+ENV SBT_VERSION ${SBT_VERSION:-1.3.8}
 
 # Install sbt
 RUN \
@@ -39,7 +39,7 @@ RUN mkdir /logs && chown -R sbtuser:sbtuser /logs
 USER sbtuser
 
 # Switch working directory
-WORKDIR /home/sbtuser  
+WORKDIR /home/sbtuser
 
 # Prepare sbt (warm cache)
 RUN \
@@ -63,4 +63,4 @@ RUN \
 ## Users wanting to use this container as non-root should combine the two following arguments
 ## -u sbtuser
 ## -w /home/sbtuser
-WORKDIR /root  
+WORKDIR /root
