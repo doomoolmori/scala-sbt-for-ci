@@ -6,7 +6,7 @@
 
 # Pull base image
 ARG BASE_IMAGE_TAG
-FROM openjdk:${BASE_IMAGE_TAG:-11.0.2-jdk-oraclelinux7}
+FROM openjdk:${BASE_IMAGE_TAG:-11.0.6-jdk-oraclelinux7}
 
 # Env variables
 ARG SCALA_VERSION
