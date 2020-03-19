@@ -28,7 +28,7 @@ docker build \
 (oraclelinux7):
 ```
 docker build \
-  --build-arg BASE_IMAGE_TAG="11.0.2-jdk-oraclelinux7" \
+  --build-arg BASE_IMAGE_TAG="11.0.6-jdk-oraclelinux7" \
   --build-arg SBT_VERSION="1.3.8" \
   --build-arg SCALA_VERSION="2.13.1" \
   -t doomoolmori/scala-sbt-for-ci \
